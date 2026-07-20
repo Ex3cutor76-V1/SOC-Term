@@ -17,7 +17,7 @@ BIN_PATH="/usr/local/bin/sct"
 
 BASE_DIR="$(dirname "$(realpath "$0")")"
 
-TEMP_DIR="/tmp/SOC-Term-install"
+TEMP_DIR="/$HOME/SOC-Term/"
 
 
 printf "${AMARELO}Iniciando instalação do ${APP_NAME}...${RESET}\n"
