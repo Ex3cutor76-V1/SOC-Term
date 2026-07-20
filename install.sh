@@ -18,9 +18,6 @@ BIN_PATH="/usr/local/bin/sct"
 
 BASE_DIR="$(dirname "$(realpath "$0")")"
 
-TEMP_DIR="/$HOME/SOC-Term/"
-
-
 printf "${AMARELO}Iniciando instalação do ${APP_NAME}...${RESET}\n"
 
 
@@ -150,8 +147,7 @@ chmod +x "$INSTALL_DIR/scripts/"*.sh
 printf "${CIANO}Limpando arquivos temporários...${RESET}\n"
 
 
-rm -rf "$TEMP_DIR"
-
+rm -rf "/$HOME/SOC-Term"
 
 printf "${VERDE}SOC-Term instalado com sucesso!${RESET}\n"
 
