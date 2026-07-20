@@ -18,7 +18,6 @@ git clone https://github.com/Ex3cutor76-V1/SOC-Term.git
 Inicia o script:
 ```bash
 cd SOC-Term
-chmod +x install.sh
 sudo ./install.sh
 ```
 
