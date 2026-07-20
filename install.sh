@@ -9,6 +9,7 @@ CIANO=$'\033[36m'
 AMARELO=$'\033[33m'
 RESET=$'\033[0m'
 
+
 APP_NAME="SOC-Term"
 
 INSTALL_DIR="/opt/$APP_NAME"
@@ -16,46 +17,77 @@ BIN_PATH="/usr/local/bin/sct"
 
 BASE_DIR="$(dirname "$(realpath "$0")")"
 
+TEMP_DIR="/tmp/SOC-Term-install"
+
+
 printf "${AMARELO}Iniciando instalação do ${APP_NAME}...${RESET}\n"
 
 
-# ==========================
 # Root
-# ==========================
 
 if [[ "$EUID" -ne 0 ]]; then
-    printf "${VERMELHO}Execute como root:${RESET}\n"
-    printf "sudo ./install.sh\n"
+    printf "${VERMELHO}Execute como root.${RESET}\n"
+    printf "Use: sudo ./install.sh\n"
     exit 1
 fi
 
 
-# ==========================
-# Verificar arquivos
-# ==========================
+# Verifica ZIP
 
-printf "${CIANO}Verificando arquivos...${RESET}\n"
+printf "${CIANO}Verificando pacote...${RESET}\n"
 
 
-if [[ ! -f "$BASE_DIR/sct.sh" ]]; then
-    printf "${VERMELHO}sct.sh não encontrado.${RESET}\n"
+ZIP_FILE="$BASE_DIR/SOC-Term.zip"
+
+
+if [[ ! -f "$ZIP_FILE" ]]; then
+    printf "${VERMELHO}SOC-Term.zip não encontrado.${RESET}\n"
     exit 1
 fi
 
 
-if [[ ! -d "$BASE_DIR/scripts" ]]; then
-    printf "${VERMELHO}Diretório scripts não encontrado.${RESET}\n"
-    exit 1
+
+# Dependência unzip
+
+if ! command -v unzip &>/dev/null; then
+
+    printf "${AMARELO}Instalando unzip...${RESET}\n"
+
+    apt update
+    apt install -y unzip
+
 fi
 
 
-printf "${VERDE}Arquivos encontrados.${RESET}\n"
+
+# Extrair
+
+printf "${CIANO}Extraindo arquivos...${RESET}\n"
+
+
+rm -rf "$TEMP_DIR"
+mkdir -p "$TEMP_DIR"
+
+
+unzip -q "$ZIP_FILE" -d "$TEMP_DIR"
 
 
 
-# ==========================
-# Dependências
-# ==========================
+# Encontrar sct.sh
+
+SOURCE_DIR=$(find "$TEMP_DIR" -type f -name "sct.sh" -exec dirname {} \; | head -n 1)
+
+
+if [[ -z "$SOURCE_DIR" ]]; then
+
+    printf "${VERMELHO}sct.sh não encontrado dentro do pacote.${RESET}\n"
+    exit 1
+
+fi
+
+
+
+# Dependências da ferramenta
 
 printf "${CIANO}Verificando dependências...${RESET}\n"
 
@@ -89,9 +121,7 @@ done
 
 
 
-# ==========================
 # Instalação
-# ==========================
 
 printf "${CIANO}Instalando arquivos...${RESET}\n"
 
@@ -101,38 +131,25 @@ rm -rf "$INSTALL_DIR"
 mkdir -p "$INSTALL_DIR/scripts"
 
 
-cp -r "$BASE_DIR/scripts/"* "$INSTALL_DIR/scripts/"
+cp -r "$SOURCE_DIR/scripts/"* "$INSTALL_DIR/scripts/"
+
+cp "$SOURCE_DIR/sct.sh" "$BIN_PATH"
 
 
-cp "$BASE_DIR/sct.sh" "$BIN_PATH"
 
-
-
-# ==========================
 # Permissões
-# ==========================
 
 chmod +x "$BIN_PATH"
 chmod +x "$INSTALL_DIR/scripts/"*.sh
 
 
 
-# ==========================
 # Limpeza
-# ==========================
 
-printf "${CIANO}Removendo arquivos temporários...${RESET}\n"
-
-
-if [[ "$BASE_DIR" == "$HOME"* ]]; then
-    rm -rf "$BASE_DIR"
-fi
+printf "${CIANO}Limpando arquivos temporários...${RESET}\n"
 
 
-
-# ==========================
-# Final
-# ==========================
+rm -rf "$TEMP_DIR"
 
 
 printf "${VERDE}SOC-Term instalado com sucesso!${RESET}\n"
