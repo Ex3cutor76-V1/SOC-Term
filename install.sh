@@ -13,6 +13,8 @@ RESET=$'\033[0m'
 
 APP_NAME="SOC-Term"
 
+USER_HOME="$(eval echo "~$SUDO_USER")"
+
 INSTALL_DIR="/opt/$APP_NAME"
 BIN_PATH="/usr/local/bin/sct"
 
@@ -146,8 +148,7 @@ chmod +x "$INSTALL_DIR/scripts/"*.sh
 
 printf "${CIANO}Limpando arquivos temporários...${RESET}\n"
 
-
-rm -rf "/$HOME/SOC-Term"
+rm -rf "$USER_HOME/SOC-Term"
 
 printf "${VERDE}SOC-Term instalado com sucesso!${RESET}\n"
 
