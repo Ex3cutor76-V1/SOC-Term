@@ -116,11 +116,8 @@ sudo lsof -i -n -P
 
 
 update)
-cd "/opt/"
-sudo rm -rf "SOC-Term/"
-git clone https://github.com/Ex3cutor76-V1/SOC-Term.git
-cd /$HOME/SOC-Term
-printf "${CIANO}Atualização completa!${RESET}\n"
+cd "$SOC_DIR"
+git pull
 ;;
 
 

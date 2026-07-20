@@ -38,6 +38,7 @@ DEPENDENCIAS=(
     systemctl
     journalctl
     ss
+    git
 )
 
 for comando in "${DEPENDENCIAS[@]}"; do
