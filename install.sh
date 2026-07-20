@@ -9,6 +9,7 @@ CIANO=$'\033[36m'
 AMARELO=$'\033[33m'
 RESET=$'\033[0m'
 
+# Variaveis importantes
 
 APP_NAME="SOC-Term"
 
@@ -23,7 +24,7 @@ TEMP_DIR="/$HOME/SOC-Term/"
 printf "${AMARELO}Iniciando instalação do ${APP_NAME}...${RESET}\n"
 
 
-# Root
+# Verificação Root
 
 if [[ "$EUID" -ne 0 ]]; then
     printf "${VERMELHO}Execute como root.${RESET}\n"
@@ -32,7 +33,7 @@ if [[ "$EUID" -ne 0 ]]; then
 fi
 
 
-# Verifica ZIP
+# Verificação ZIP
 
 printf "${CIANO}Verificando pacote...${RESET}\n"
 
@@ -47,7 +48,7 @@ fi
 
 
 
-# Dependência unzip
+# Dependências unzip
 
 if ! command -v unzip &>/dev/null; then
 
@@ -60,7 +61,7 @@ fi
 
 
 
-# Extrair
+# Extrair dados da ferramenta
 
 printf "${CIANO}Extraindo arquivos...${RESET}\n"
 
@@ -73,7 +74,7 @@ unzip -q "$ZIP_FILE" -d "$TEMP_DIR"
 
 
 
-# Encontrar sct.sh
+# Encontrar arquivo sct.sh
 
 SOURCE_DIR=$(find "$TEMP_DIR" -type f -name "sct.sh" -exec dirname {} \; | head -n 1)
 
@@ -121,7 +122,7 @@ done
 
 
 
-# Instalação
+# Instalação no sistema
 
 printf "${CIANO}Instalando arquivos...${RESET}\n"
 
