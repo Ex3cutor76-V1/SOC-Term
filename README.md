@@ -4,23 +4,23 @@ O SOC-Term é uma ferramenta CLI voltada para Analistas de SOC, com o objetivo d
 
 ## Funcionalidades
 
-*Análise de Logs**
+*Análise de Logs*
 
   * Sistema
   * SSH
   * Serviços
 
-  *Análise de Rede**
+  *Análise de Rede*
 
   * Identificação de portas TCP
   * Identificação de portas UDP
 
-  *Monitoramento**
+  *Monitoramento*
 
   * Processos em execução
   * Serviços ativos
 
-  *Extração de Indicadores (IoCs)**
+  *Extração de Indicadores (IoCs)*
 
   * Endereços IP
   * URLs
