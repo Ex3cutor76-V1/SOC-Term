@@ -26,7 +26,7 @@ O SOC-Term é uma ferramenta CLI voltada para Analistas de SOC, com o objetivo d
   * URLs
   * Endereços de e-mail
 
-## Dependências:
+## Dependências
 Na maioria das instalações não é necessário instalar as dependências manualmente, pois o script `install.sh` realiza automaticamente essa etapa.
 O SOC-Term utiliza ferramentas já presentes no sistema Linux para realizar suas análises, mantendo poucas dependências externas:
 
@@ -45,7 +45,7 @@ cd SOC-Term
 sudo ./install.sh
 ```
 
-## Comandos:
+## Comandos
 | Comando | Descrição |
 | --------|-----------|
 | `sct -h`| Mostra os comandos |
