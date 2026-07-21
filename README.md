@@ -1,6 +1,6 @@
 # O que é o SOC-Term?
 
-O SOC-Term é uma ferramenta CLI voltada para Analistas de SOC, com o objetivo de facilitar as análises de segurança.
+O SOC-Term é uma ferramenta CLI voltada para Analistas de SOC, com o objetivo de facilitar as análises de segurança em ambientes Linux. Ele reúne verificações comuns realizadas durante as triagens de segurança, permitindo essas funcionalidades:
 
 ## Funcionalidades
 
@@ -27,12 +27,12 @@ O SOC-Term é uma ferramenta CLI voltada para Analistas de SOC, com o objetivo d
   * Endereços de e-mail
 
 ## Dependências:
-Na maior parte das instalações não é necessário instalar as dependências, afinal o script install.sh já automaticamente instala essas dependências, mas caso queira saber quais são as dependências, são essas:
+Na maioria das instalações não é necessário instalar as dependências manualmente, pois o script `install.sh` realiza automaticamente essa etapa.
+O SOC-Term utiliza ferramentas já presentes no sistema Linux para realizar suas análises, mantendo poucas dependências externas:
 
 ```bash 
 sudo apt install unzip lsof 
 ```
-O SOC-Term utiliza ferramentas do próprio sistema para as análises, não é preciso de tanta dependência.
 
 ## Instalação
 Clone o repositório:
