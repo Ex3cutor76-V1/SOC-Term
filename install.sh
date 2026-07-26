@@ -158,20 +158,25 @@ chmod +x "$BIN_PATH"
 chmod +x "$INSTALL_DIR/scripts/"*.sh
 
 
-# Permissão para o usuário salvar dados
+# Permissões para o usuário salvar dados e logs
 
 if [[ -n "$SUDO_USER" ]]; then
 
     chown -R "$SUDO_USER":"$SUDO_USER" "$INSTALL_DIR/data"
+    chown -R "$SUDO_USER":"$SUDO_USER" "$INSTALL_DIR/logs"
+
+else
+
+    chown -R "$USER":"$USER" "$INSTALL_DIR/data"
+    chown -R "$USER":"$USER" "$INSTALL_DIR/logs"
 
 fi
 
 
+# Proteção das pastas
 
-# Proteção dos logs
-
+chmod 700 "$INSTALL_DIR/data"
 chmod 700 "$INSTALL_DIR/logs"
-
 
 
 # Limpeza
