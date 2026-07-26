@@ -28,7 +28,9 @@ else
     USER_HOME="$HOME"
 fi
 
+
 printf "${AMARELO}Iniciando instalação do ${APP_NAME}...${RESET}\n"
+
 
 # Verificação Root
 
@@ -40,6 +42,7 @@ if [[ "$EUID" -ne 0 ]]; then
     exit 1
 
 fi
+
 
 # Verificação ZIP
 
@@ -57,28 +60,41 @@ if [[ ! -f "$ZIP_FILE" ]]; then
 
 fi
 
+
 # Dependências
+
 dependencias=(
 unzip
 lsof
 iproute2
 )
 
-if command -v apt; then
+
+printf "${CIANO}Verificando dependências...${RESET}\n"
+
+
+if command -v apt >/dev/null; then
+
     apt install -y "${dependencias[@]}"
 
-elif command -v dnf; then
+elif command -v dnf >/dev/null; then
+
     dnf install -y "${dependencias[@]}"
 
-elif command -v pacman; then
+elif command -v pacman >/dev/null; then
+
     pacman -Sy --noconfirm "${dependencias[@]}"
 
 else
+
     printf "${VERMELHO}Gerenciador de pacotes não encontrado.${RESET}\n"
     exit 1
+
 fi
 
-# Extrair arquivos importantes
+
+
+# Extrair arquivos
 
 printf "${CIANO}Extraindo arquivos...${RESET}\n"
 
@@ -114,28 +130,49 @@ if [[ ! -d "$SOURCE_DIR/scripts" ]]; then
 
 fi
 
-# Instalação do software
+
+
+# Instalação
 
 printf "${CIANO}Instalando arquivos...${RESET}\n"
 
 
 rm -rf "$INSTALL_DIR"
 
+
 mkdir -p "$INSTALL_DIR/scripts"
-
 mkdir -p "$INSTALL_DIR/data"
-
 mkdir -p "$INSTALL_DIR/logs"
+
 
 cp -r "$SOURCE_DIR/scripts/"* "$INSTALL_DIR/scripts/"
 
 cp "$SOURCE_DIR/sct.sh" "$BIN_PATH"
+
+
 
 # Permissões
 
 chmod +x "$BIN_PATH"
 
 chmod +x "$INSTALL_DIR/scripts/"*.sh
+
+
+# Permissão para o usuário salvar dados
+
+if [[ -n "$SUDO_USER" ]]; then
+
+    chown -R "$SUDO_USER":"$SUDO_USER" "$INSTALL_DIR/data"
+
+fi
+
+
+
+# Proteção dos logs
+
+chmod 700 "$INSTALL_DIR/logs"
+
+
 
 # Limpeza
 
@@ -160,8 +197,7 @@ fi
 
 
 
-# Final do script
-
+# Final
 
 printf "${VERDE}${APP_NAME} instalado com sucesso!${RESET}\n"
 
