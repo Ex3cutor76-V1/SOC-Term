@@ -61,6 +61,7 @@ fi
 dependencias=(
 unzip
 lsof
+ss
 )
 
 if command -v apt; then
