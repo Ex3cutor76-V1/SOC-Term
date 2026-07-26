@@ -61,7 +61,7 @@ fi
 dependencias=(
 unzip
 lsof
-ss
+iproute2
 )
 
 if command -v apt; then
