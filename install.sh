@@ -28,10 +28,7 @@ else
     USER_HOME="$HOME"
 fi
 
-
 printf "${AMARELO}Iniciando instalação do ${APP_NAME}...${RESET}\n"
-
-
 
 # Verificação Root
 
@@ -43,8 +40,6 @@ if [[ "$EUID" -ne 0 ]]; then
     exit 1
 
 fi
-
-
 
 # Verificação ZIP
 
@@ -62,20 +57,25 @@ if [[ ! -f "$ZIP_FILE" ]]; then
 
 fi
 
+# Dependências
+dependencias=(
+unzip
+lsof
+)
 
+if command -v apt; then
+    apt install -y "${dependencias[@]}"
 
-# Dependências unzip
+elif command -v dnf; then
+    dnf install -y "${dependencias[@]}"
 
-if ! command -v unzip &>/dev/null; then
+elif command -v pacman; then
+    pacman -Sy --noconfirm "${dependencias[@]}"
 
-    printf "${AMARELO}Instalando unzip...${RESET}\n"
-
-    apt update
-    apt install -y unzip
-
+else
+    printf "${VERMELHO}Gerenciador de pacotes não encontrado.${RESET}\n"
+    exit 1
 fi
-
-
 
 # Extrair arquivos importantes
 
@@ -113,37 +113,6 @@ if [[ ! -d "$SOURCE_DIR/scripts" ]]; then
 
 fi
 
-
-
-# Dependências
-
-printf "${CIANO}Verificando dependências...${RESET}\n"
-
-
-DEPENDENCIAS=(
-    lsof
-)
-
-
-for comando in "${DEPENDENCIAS[@]}"; do
-
-    if command -v "$comando" &>/dev/null; then
-
-        printf "${VERDE}OK: $comando${RESET}\n"
-
-    else
-
-        printf "${AMARELO}Instalando: $comando${RESET}\n"
-
-        apt update
-        apt install -y "$comando"
-
-    fi
-
-done
-
-
-
 # Instalação do software
 
 printf "${CIANO}Instalando arquivos...${RESET}\n"
@@ -153,20 +122,19 @@ rm -rf "$INSTALL_DIR"
 
 mkdir -p "$INSTALL_DIR/scripts"
 
+mkdir -p "$INSTALL_DIR/data"
+
+mkdir -p "$INSTALL_DIR/logs"
 
 cp -r "$SOURCE_DIR/scripts/"* "$INSTALL_DIR/scripts/"
 
 cp "$SOURCE_DIR/sct.sh" "$BIN_PATH"
-
-
 
 # Permissões
 
 chmod +x "$BIN_PATH"
 
 chmod +x "$INSTALL_DIR/scripts/"*.sh
-
-
 
 # Limpeza
 

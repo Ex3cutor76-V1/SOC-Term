@@ -65,5 +65,6 @@ sudo ./install.sh
 | `sct -pr` | Faz anáise de processos |
 | `sct -p` | Faz análise de portas TCP e UDP |
 | `sct -l` | Faz a análise de recursos com o lsof |
-
+| `sct -db` | Consulta strings |
+| `sct --log` | Consulta logs |
 
