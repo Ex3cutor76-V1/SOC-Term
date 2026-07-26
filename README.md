@@ -61,6 +61,7 @@ sudo ./install.sh
 | `sct -ssh` | Cria um arquivo txt com os logs envolvendo SSH |
 | `sct -sys` | Cria um arquivo txt com os logs envolvendo o sistema |
 | `sct -svc` | Cria um arquivo txt com os logs envolvendo os serviços |
+| `sct -krn` | Cria um arquivo txt com os logs envolvendo o kernel |
 | `sct -se` | Faz a análise de serviços rodando |
 | `sct -pr` | Faz anáise de processos |
 | `sct -p` | Faz análise de portas TCP e UDP |
