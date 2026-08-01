@@ -67,6 +67,7 @@ dependencias=(
 unzip
 lsof
 iproute2
+file
 )
 
 

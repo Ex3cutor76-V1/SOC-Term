@@ -68,4 +68,7 @@ sudo ./install.sh
 | `sct -l` | Faz a análise de recursos com o lsof |
 | `sct -db` | Consulta strings |
 | `sct --log` | Consulta logs |
-
+| `sct -a <arquivo>` | Análise de hash de um arquivo |
+| `sct -i <arquivo>` | Informações sobre um arquivo | 
+| `sct -u` | Análise de usuários do sistema | 
+| `sct -v` | Versão da ferramenta |
