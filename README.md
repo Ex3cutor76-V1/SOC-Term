@@ -34,7 +34,7 @@ Realiza extração de possíveis indicadores encontrados em arquivos:
 O SOC-Term utiliza principalmente ferramentas já presentes no sistema Linux para realizar suas análises, mantendo poucas dependências externas:
 
 ```bash 
-sudo apt install unzip lsof iproute2
+sudo apt install unzip lsof iproute2 file
 ```
 OBS: Esses pacotes normalmente são instalados automaticamente pelo `install.sh`.
 As dependências utilizadas no SOC-Term servem para:
