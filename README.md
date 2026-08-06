@@ -10,6 +10,7 @@ Realiza análise e coleta de informações presentes em logs do sistema:
   * Sistema
   * SSH
   * Serviços
+  * Kernel
 
 ### Análise de Rede
 Auxilia na identificação de informações relacionadas à rede:
@@ -23,12 +24,23 @@ Permite visualizar informações sobre o estado atual do sistema:
   * Processos em execução
   * Serviços ativos
 
-### Extração de Indicadores de Comprometimento(IoCs)
-Realiza extração de possíveis indicadores encontrados em arquivos:
+### Arquivos
+Permite fazer análises sobre um arquivo, podendo conter:
 
-  * Endereços IP
-  * URLs
-  * Endereços de e-mail
+* Extração de strings (URL, IP ou Email)
+* Análise de hash (MD5, SHA256, SHA512)
+* Informações sobre o arquivo 
+
+### Usuários
+Faz uma análise de uma lista de usuários, podendo ter usuários como:
+
+* Usuários comuns (humanos)
+* Usuários de serviços (Sistema)
+
+### Consultas
+
+* Consultas de strings
+* Consultas de logs
 
 ## Dependências
 O SOC-Term utiliza principalmente ferramentas já presentes no sistema Linux para realizar suas análises, mantendo poucas dependências externas:
