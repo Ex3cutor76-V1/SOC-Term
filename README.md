@@ -52,7 +52,13 @@ OBS: Esses pacotes normalmente são instalados automaticamente pelo `install.sh`
 As dependências utilizadas no SOC-Term servem para:
 
 `unzip`: Utilizado no processo de instalação.
+
 `lsof`: Utilizado para análises de arquivos, processos e recursos em uso.
+
+`file`: Utilizado para encontrar informações sobre um arquivo.
+
+`iproute2`: Usado em ss nas análises de UDP e TCP
+
 
 ## Instalação
 Clone o repositório:
