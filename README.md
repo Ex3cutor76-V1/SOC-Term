@@ -84,3 +84,4 @@ sudo ./install.sh
 | `sct -i <arquivo>` | Informações sobre um arquivo | 
 | `sct -u` | Análise de usuários do sistema | 
 | `sct -v` | Versão da ferramenta |
+| `sct --upgrade` | Atualiza a ferramenta |
