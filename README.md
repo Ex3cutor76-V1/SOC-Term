@@ -74,20 +74,26 @@ sudo ./install.sh
 ## Comandos
 | Comando | Descrição |
 | --------|-----------|
-| `sct -h`| Mostra os comandos |
-| `sct -st <arquivo>` | Faz análise de strings de um arquivo |
-| `sct -ssh` | Cria um arquivo txt com os logs envolvendo SSH |
-| `sct -sys` | Cria um arquivo txt com os logs envolvendo o sistema |
-| `sct -svc` | Cria um arquivo txt com os logs envolvendo os serviços |
-| `sct -krn` | Cria um arquivo txt com os logs envolvendo o kernel |
-| `sct -se` | Faz a análise de serviços rodando |
-| `sct -pr` | Faz análise de processos |
-| `sct -p` | Faz análise de portas TCP e UDP |
-| `sct -l` | Faz a análise de recursos com o lsof |
-| `sct -db` | Consulta strings |
-| `sct --log` | Consulta logs |
-| `sct -a <arquivo>` | Análise de hash de um arquivo |
-| `sct -i <arquivo>` | Informações sobre um arquivo | 
-| `sct -u` | Análise de usuários do sistema | 
-| `sct -v` | Versão da ferramenta |
-| `sct --upgrade` | Atualiza a ferramenta |
+| `sudo sct -h`| Mostra os comandos |
+| `sudo sct -st <arquivo>` | Faz análise de strings de um arquivo |
+| `sudo sct -ssh` | Cria um arquivo txt com os logs envolvendo SSH |
+| `sudo sct -sys` | Cria um arquivo txt com os logs envolvendo o sistema |
+| `sudo sct -svc` | Cria um arquivo txt com os logs envolvendo os serviços |
+| `sudo sct -krn` | Cria um arquivo txt com os logs envolvendo o kernel |
+| `sudo sct -se` | Faz a análise de serviços rodando |
+| `sudo sct -pr` | Faz análise de processos |
+| `sudo sct -p` | Faz análise de portas TCP e UDP |
+| `sudo sct -l` | Faz a análise de recursos com o lsof |
+| `sudo sct -db` | Consulta strings |
+| `sudo sct --log` | Consulta logs |
+| `sudo sct -a <arquivo>` | Análise de hash de um arquivo |
+| `sudo sct -i <arquivo>` | Informações sobre um arquivo | 
+| `sudo sct -u` | Análise de usuários do sistema | 
+| `sudo sct -v` | Versão da ferramenta |
+| `sudo sct --upgrade` | Atualiza a ferramenta |
+
+## Por que a ferramenta usa root?
+
+O SOC-Term na versão 4.1 utiliza root, por conta que alguns comandos do próprio ambiente Linux necessitam de execução root, como
+por exemplo, análises profundas de UDP e TCP necessitam de root para analisar os processos que usam alguma porta, a mesma coisa para
+salvar strings e logs do próprio sistema.
