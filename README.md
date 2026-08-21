@@ -94,6 +94,6 @@ sudo ./install.sh
 
 ## Por que a ferramenta usa root?
 
-O SOC-Term na versão 4.1 utiliza root, por conta que alguns comandos do próprio ambiente Linux necessitam de execução root, como
+O SOC-Term na versão 4.1 utiliza root, por conta que alguns comandos do próprio ambiente Linux que necessitam de execução root, como
 por exemplo, análises profundas de UDP e TCP necessitam de root para analisar os processos que usam alguma porta, a mesma coisa para
 salvar strings e logs do próprio sistema.
