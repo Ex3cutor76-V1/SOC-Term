@@ -1,0 +1,6 @@
+# Chave da API do VirusTotal - nunca versionar
+API/API.txt
+
+# Saídas de análise geradas em tempo de execução
+data/*.txt
+logs/*.txt
