@@ -29,13 +29,16 @@ Permite fazer análises sobre um arquivo, podendo conter:
 
 * Extração de strings (URL, IP ou Email)
 * Análise de hash (MD5, SHA256, SHA512)
-* Informações sobre o arquivo 
+* Informações sobre o arquivo
 
 ### Usuários
 Faz uma análise de uma lista de usuários, podendo ter usuários como:
 
 * Usuários comuns (humanos)
 * Usuários de serviços (Sistema)
+
+### Engenharia reversa 
+* Coleta e lê instruções assembler de um binário
 
 ### Consultas
 
@@ -47,7 +50,7 @@ Faz uma análise de uma lista de usuários, podendo ter usuários como:
 O SOC-Term utiliza principalmente ferramentas já presentes no sistema Linux para realizar suas análises, mantendo poucas dependências externas:
 
 ```bash 
-sudo apt install unzip lsof iproute2 file curl jq
+sudo apt install unzip lsof iproute2 file curl jq binutils
 ```
 OBS: Esses pacotes normalmente são instalados automaticamente pelo `install.sh`.
 As dependências utilizadas no SOC-Term servem para:
@@ -63,6 +66,8 @@ As dependências utilizadas no SOC-Term servem para:
 `curl`: Usado na consulta de URL para usar o virustotal.
 
 `jq`: Usado para organizar as informações que o virustotal entregar.
+
+`objdump`: Usado na coleta de instruções assembly de binários.
 
 ## Instalação
 Clone o repositório:
@@ -96,6 +101,7 @@ sudo ./install.sh
 | `sudo sct -v` ou `sudo sct --version` | Versão da ferramenta |
 | `sudo sct --upgrade` ou `sudo sct -up` | Atualiza a ferramenta |
 | `sudo sct -ur` ou `sudo sct --analyze-url` | Realiza consulta no virustotal |
+| `sudo sct -e` ou `sudo sct --engineering` | Coleta e análise de instruções assembly de um binário |
 
 ## Por que a ferramenta usa root?
 
