@@ -62,7 +62,8 @@ lsof
 iproute2
 file
 curl
-jq)
+jq
+binutils)
 
 printf "${CIANO}Verificando dependências...${RESET}\n"
 
