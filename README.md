@@ -37,8 +37,9 @@ Faz uma análise de uma lista de usuários, podendo ter usuários como:
 * Usuários comuns (humanos)
 * Usuários de serviços (Sistema)
 
-### Engenharia reversa 
-* Coleta e lê instruções assembler de um binário
+### Engenharia reversa
+
+* Coleta e leitura de instruções Assembly de binários
 
 ### Consultas
 
@@ -67,7 +68,7 @@ As dependências utilizadas no SOC-Term servem para:
 
 `jq`: Usado para organizar as informações que o virustotal entregar.
 
-`objdump`: Usado na coleta de instruções assembly de binários.
+`objdump`: Usado na extração e leitura de instruções Assembly de binários.
 
 ## Instalação
 Clone o repositório:
@@ -84,7 +85,7 @@ sudo ./install.sh
 | Comando | Descrição |
 | --------|-----------|
 | `sudo sct -h` ou `sudo sct --help` | Mostra os comandos |
-| `sudo sct -st <arquivo>` ou `sudo sct -st <arquivo>` | Faz análise de strings de um arquivo |
+| `sudo sct -st <arquivo>` ou `sudo sct --string <arquivo>` | Faz análise de strings de um arquivo |
 | `sudo sct -ssh` ou `sudo sct --ssh` | Cria um arquivo txt com os logs envolvendo SSH |
 | `sudo sct -sys` ou `sudo sct --system`| Cria um arquivo txt com os logs envolvendo o sistema |
 | `sudo sct -svc` ou `sudo sct --service` | Cria um arquivo txt com os logs envolvendo os serviços |
@@ -101,7 +102,7 @@ sudo ./install.sh
 | `sudo sct -v` ou `sudo sct --version` | Versão da ferramenta |
 | `sudo sct --upgrade` ou `sudo sct -up` | Atualiza a ferramenta |
 | `sudo sct -ur` ou `sudo sct --analyze-url` | Realiza consulta no virustotal |
-| `sudo sct -e` ou `sudo sct --engineering` | Coleta e análise de instruções assembly de um binário |
+| `sudo sct -e <arquivo>` ou `sudo sct --engineering <arquivo>` | Extrai as instruções Assembly de um binário |
 
 ## Por que a ferramenta usa root?
 
